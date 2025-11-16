@@ -13,4 +13,7 @@ $path = parse_url($_SERVER['REQUEST_URI'])['path'];
 $method = $_POST['__method'] ?? $_SERVER['REQUEST_METHOD'];
 
 require base_path('routes.php');
+
+require base_path('classes/Database.php');
+
 $router->route($path, $method);

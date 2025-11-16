@@ -52,7 +52,7 @@ require "templates/header.php";
     }
 
     #head-text {
-        margin-top: 50px;
+        margin-top: 30px;
         font-size: 30px;
     }
 
@@ -78,10 +78,11 @@ require "templates/header.php";
 <main>
     <div class="main-container">
         <div id="head-text">
-            Login
+            Register
         </div>
-        <form action="/login" method="POST">
+        <form action="/register" method="POST">
             <input type="text" name="username" id="username" placeholder="Username">
+            <input type="email" name="email" id="email" placeholder="E-mail">
             <input type="password" name="password" id="password" placeholder="Password">
             <button type="submit" id="btn-sbmt">Submit</button>
         </form>
