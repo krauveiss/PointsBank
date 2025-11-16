@@ -45,5 +45,6 @@ class Router
                 return require(base_path($route['controller']));
             }
         }
+        die("404");
     }
 }
