@@ -81,7 +81,7 @@ require "templates/header.php";
             Login
         </div>
         <form action="/login" method="POST">
-            <input type="text" name="username" id="username" placeholder="Username">
+            <input type="email" name="email" id="username" placeholder="Email">
             <input type="password" name="password" id="password" placeholder="Password">
             <button type="submit" id="btn-sbmt">Submit</button>
         </form>
