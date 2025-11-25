@@ -7,6 +7,8 @@ class User
     public $username;
     public $email;
     public $password_hash;
+    public $reg_date;
+    public $status;
     private static $db;
 
     public static function setDB(Database $db): void
@@ -51,6 +53,8 @@ class User
         $user->username = $arr['username'];
         $user->id = $arr['id'];
         $user->email = $arr['email'];
+        $user->reg_date = $arr['reg_date'];
+        $user->status = $arr['status'];
         $user->password_hash = $arr['password'];
         return $user;
     }
