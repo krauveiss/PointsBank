@@ -1,5 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
+    $heading = 'Register';
     require view("register");
 } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
     require base_path('classes/User.php');

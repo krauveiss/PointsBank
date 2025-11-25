@@ -208,138 +208,26 @@ $availableCurrencies = [
         font-size: 0.9rem;
     }
 
-    .modal {
-        display: none;
+    #modal {
         position: fixed;
         z-index: 1000;
         left: 0;
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-    }
-
-    .modal-content {
-        background-color: #202531;
-        margin: 10% auto;
-        padding: 0;
-        border-radius: 15px;
-        width: 90%;
-        max-width: 500px;
-        box-shadow: 0 4px 20px rgba(92, 139, 215, 0.3);
-        border: 1px solid #2d3748;
-    }
-
-    .modal-header {
-        padding: 20px 30px;
-        border-bottom: 1px solid #2d3748;
-    }
-
-    .modal-header h3 {
-        margin: 0;
-        color: white;
-        font-size: 1.3rem;
-    }
-
-    .modal-body {
-        padding: 30px;
-    }
-
-    .currency-options {
-        display: grid;
-        gap: 15px;
-        margin-bottom: 25px;
-    }
-
-    .currency-option {
-        background: #2d3748;
-        border: 2px solid #4a5568;
-        border-radius: 10px;
-        padding: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .currency-option:hover {
-        border-color: #4299e1;
-        background: #2d3748;
-    }
-
-    .currency-option.selected {
-        border-color: #48bb78;
-        background: rgba(72, 187, 120, 0.1);
-    }
-
-    .currency-icon {
-        width: 40px;
-        height: 40px;
-        background: #4299e1;
-        border-radius: 50%;
-        display: flex;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: none;
         align-items: center;
         justify-content: center;
-        font-size: 1.2rem;
     }
 
-    .currency-info {
-        flex-grow: 1;
-    }
+    .modal-container {
+        width: 300px;
+        height: 300px;
+        background-color: #1a202c;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(66, 153, 225, 0.15);
 
-    .currency-name {
-        color: white;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    .currency-desc {
-        color: #a0aec0;
-        font-size: 0.8rem;
-    }
-
-    .modal-actions {
-        display: flex;
-        gap: 15px;
-        justify-content: flex-end;
-    }
-
-    .btn-cancel {
-        background: #4a5568;
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-    }
-
-    .btn-cancel:hover {
-        background: #2d3748;
-    }
-
-    .btn-create {
-        background: #4299e1;
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-    }
-
-    .btn-create:hover {
-        background: #3182ce;
-    }
-
-    .btn-create:disabled {
-        background: #4a5568;
-        cursor: not-allowed;
-    }
-
-    #walletForm {
-        display: none;
     }
 </style>
 
@@ -358,12 +246,14 @@ $availableCurrencies = [
         <div class="profile-container">
             <div class="profile-card">
                 <div>
-                    <button class="btn-ac" onclick="openModal()">
-                        <svg width="30px" height="30px" viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent">
-                            <path d="M11.002 11.2502C10.5878 11.2502 10.252 11.586 10.252 12.0002C10.252 12.4145 10.5878 12.7502 11.002 12.7502V11.2502ZM13.002 12.7502C13.4162 12.7502 13.752 12.4145 13.752 12.0002C13.752 11.586 13.4162 11.2502 13.002 11.2502V12.7502ZM13.002 11.2502C12.5878 11.2502 12.252 11.586 12.252 12.0002C12.252 12.4145 12.5878 12.7502 13.002 12.7502V11.2502ZM15.002 12.7502C15.4162 12.7502 15.752 12.4145 15.752 12.0002C15.752 11.586 15.4162 11.2502 15.002 11.2502V12.7502ZM13.752 12.0002C13.752 11.586 13.4162 11.2502 13.002 11.2502C12.5878 11.2502 12.252 11.586 12.252 12.0002H13.752ZM12.252 14.0002C12.252 14.4145 12.5878 14.7502 13.002 14.7502C13.4162 14.7502 13.752 14.4145 13.752 14.0002H12.252ZM12.252 12.0002C12.252 12.4145 12.5878 12.7502 13.002 12.7502C13.4162 12.7502 13.752 12.4145 13.752 12.0002H12.252ZM13.752 10.0002C13.752 9.58603 13.4162 9.25024 13.002 9.25024C12.5878 9.25024 12.252 9.58603 12.252 10.0002H13.752ZM11.002 12.7502H13.002V11.2502H11.002V12.7502ZM13.002 12.7502H15.002V11.2502H13.002V12.7502ZM12.252 12.0002V14.0002H13.752V12.0002H12.252ZM13.752 12.0002V10.0002H12.252V12.0002H13.752Z" fill=white />
-                        </svg>
-                        Create a new wallet
-                    </button>
+                    <form action="">
+                        <button class="btn-ac">
+                            <svg width="30px" height="30px" viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent">
+                                <path d="M11.002 11.2502C10.5878 11.2502 10.252 11.586 10.252 12.0002C10.252 12.4145 10.5878 12.7502 11.002 12.7502V11.2502ZM13.002 12.7502C13.4162 12.7502 13.752 12.4145 13.752 12.0002C13.752 11.586 13.4162 11.2502 13.002 11.2502V12.7502ZM13.002 11.2502C12.5878 11.2502 12.252 11.586 12.252 12.0002C12.252 12.4145 12.5878 12.7502 13.002 12.7502V11.2502ZM15.002 12.7502C15.4162 12.7502 15.752 12.4145 15.752 12.0002C15.752 11.586 15.4162 11.2502 15.002 11.2502V12.7502ZM13.752 12.0002C13.752 11.586 13.4162 11.2502 13.002 11.2502C12.5878 11.2502 12.252 11.586 12.252 12.0002H13.752ZM12.252 14.0002C12.252 14.4145 12.5878 14.7502 13.002 14.7502C13.4162 14.7502 13.752 14.4145 13.752 14.0002H12.252ZM12.252 12.0002C12.252 12.4145 12.5878 12.7502 13.002 12.7502C13.4162 12.7502 13.752 12.4145 13.752 12.0002H12.252ZM13.752 10.0002C13.752 9.58603 13.4162 9.25024 13.002 9.25024C12.5878 9.25024 12.252 9.58603 12.252 10.0002H13.752ZM11.002 12.7502H13.002V11.2502H11.002V12.7502ZM13.002 12.7502H15.002V11.2502H13.002V12.7502ZM12.252 12.0002V14.0002H13.752V12.0002H12.252ZM13.752 12.0002V10.0002H12.252V12.0002H13.752Z" fill=white />
+                            </svg>
+                            Create a new wallet
+                        </button>
+                    </form>
                 </div>
                 <div class="wallet-item">
                     <div class="status">Active</div>
@@ -384,94 +274,34 @@ $availableCurrencies = [
             <div class="profile-card">
             </div>
         </div>
+        <div id="modal">
+            <div class="modal-container">
+
+            </div>
+        </div>
     </div>
+
 </main>
 
-<div id="currencyModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h3>Select Currency</h3>
-        </div>
-        <div class="modal-body">
-            <div class="currency-options" id="currencyOptions">
-                <?php foreach ($availableCurrencies as $key => $name): ?>
-                    <div class="currency-option" data-currency="<?= $key ?>">
-                        <div class="currency-icon">
-                            <?= $key === 'points' ? '💰' : ($key === 'gold' ? '🥇' : ($key === 'silver' ? '🥈' : '💎')) ?>
-                        </div>
-                        <div class="currency-info">
-                            <div class="currency-name"><?= $name ?></div>
-                            <div class="currency-desc">
-                                <?= $key === 'points' ? 'Основная валюта системы' : ($key === 'gold' ? 'Премиальная валюта' : ($key === 'silver' ? 'Серебряные баллы' : 'Эксклюзивная валюта')) ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-            <div class="modal-actions">
-                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-                <button class="btn-create" id="createBtn" disabled onclick="createWallet()">Create Wallet</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <script>
-    let selectedCurrency = null;
+    const curBtn = document.querySelector('.btn-ac');
+    curBtn.addEventListener('click', openModal);
 
-    function openModal() {
-        document.getElementById('currencyModal').style.display = 'block';
-        selectedCurrency = null;
-        updateCreateButton();
+    function openModal(event) {
+        document.getElementById('modal').style.display = 'flex';
+        event.preventDefault();
     }
 
     function closeModal() {
-        document.getElementById('currencyModal').style.display = 'none';
-        document.querySelectorAll('.currency-option').forEach(option => {
-            option.classList.remove('selected');
-        });
-        selectedCurrency = null;
+        document.getElementById('modal').style.display = 'none';
     }
-
-    function selectCurrency(currency) {
-        selectedCurrency = currency;
-        document.querySelectorAll('.currency-option').forEach(option => {
-            if (option.dataset.currency === currency) {
-                option.classList.add('selected');
-            } else {
-                option.classList.remove('selected');
-            }
-        });
-
-        updateCreateButton();
-    }
-
-    function updateCreateButton() {
-        const createBtn = document.getElementById('createBtn');
-        createBtn.disabled = !selectedCurrency;
-    }
-
-    function createWallet() {
-        if (!selectedCurrency) return;
-        document.getElementById('selectedCurrency').value = selectedCurrency;
-
-        document.getElementById('walletForm').submit();
-    }
-
     window.onclick = function(event) {
-        const modal = document.getElementById('currencyModal');
-        if (event.target === modal) {
+        const modal = document.getElementById('modal');
+        if (event.target == modal) {
             closeModal();
         }
     }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.currency-option').forEach(option => {
-            option.addEventListener('click', function() {
-                selectCurrency(this.dataset.currency);
-            });
-        });
-    });
 </script>
 
 <?php
