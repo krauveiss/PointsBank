@@ -10,4 +10,6 @@ $router->post('/register', 'controllers/register.php');
 
 $router->get('/dashboard', 'controllers/dashboard.php');
 $router->get('/profile', 'controllers/profile.php');
+
 $router->post('/new_wallet', 'controllers/new_wallet.php');
+$router->post('/wallet', 'controllers/create_wallet.php');

@@ -227,6 +227,11 @@ $availableCurrencies = [
         background-color: #1a202c;
         border-radius: 10px;
         box-shadow: 0 4px 12px rgba(66, 153, 225, 0.15);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
 
     }
 </style>
@@ -244,7 +249,7 @@ $availableCurrencies = [
         </div>
 
         <div class="profile-container">
-            <div class="profile-card">
+            <div class="profile-card" style="max-height: 300px; overflow: auto">
                 <div>
                     <form action="">
                         <button class="btn-ac">
@@ -255,27 +260,23 @@ $availableCurrencies = [
                         </button>
                     </form>
                 </div>
-                <div class="wallet-item">
-                    <div class="status">Active</div>
-                    <div class="balance">0,3</div>
-                    <div class="currency">Simple Points</div>
-                </div>
-                <div class="wallet-item">
-                    <div class="status">Active</div>
-                    <div class="balance">0,3</div>
-                    <div class="currency">Simple Points</div>
-                </div>
-                <div class="wallet-item">
-                    <div class="status">Active</div>
-                    <div class="balance">0,3</div>
-                    <div class="currency">Simple Points</div>
-                </div>
+                <?php foreach ($wallets as $wallet): ?>
+                    <div class="wallet-item">
+                        <div class="status" style="filter:blur(0px)"><?= htmlspecialchars($wallet->status) ?></div>
+                        <div class="balance"><?= htmlspecialchars($wallet->balance) ?></div>
+                        <div class="currency"><?= htmlspecialchars($wallet->currency) ?></div>
+                    </div>
+                <?php endforeach; ?>
             </div>
             <div class="profile-card">
             </div>
         </div>
         <div id="modal">
             <div class="modal-container">
+                <form action="/wallet" method="POST">
+                    <input type="hidden" name="currency" value="points">
+                    <button type="submit" style="border: none; padding: 20px; background: rgba(92, 139, 215, 0.2); border-radius: 10px;">NEW WALLET</button>
+                </form>
 
             </div>
         </div>

@@ -1,12 +1,10 @@
 <?php
 Session::checkAuth();
-$heading = "Dashboard";
 
 require base_path('classes/User.php');
 $config = require(base_path('\\config\\database.php'));
 $db = new Database($config);
 User::setDB($db);
-
 
 $user = User::findByEmail($_SESSION['user']['email']);
 if (!$user) {
@@ -16,6 +14,4 @@ if (!$user) {
 
 require base_path('classes/Wallet.php');
 Wallet::setDB($db);
-
-$wallets = Wallet::showAllWallets($user->id);
-require view('dashboard');
+Wallet::openWallet($user->id, $_POST['currency']);
