@@ -13,3 +13,5 @@ $router->get('/profile', 'controllers/profile.php');
 
 $router->post('/new_wallet', 'controllers/new_wallet.php');
 $router->post('/wallet', 'controllers/create_wallet.php');
+$router->get('/wallet/', 'controllers/view_wallet.php');
+$router->post('/transfer/', 'controllers/transfer.php');

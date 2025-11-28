@@ -238,7 +238,6 @@ $availableCurrencies = [
 
 <form id="walletForm" action="/new_wallet" method="POST">
     <input type="hidden" name="currency" id="selectedCurrency">
-    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?? '' ?>">
 </form>
 
 <main>
@@ -260,15 +259,18 @@ $availableCurrencies = [
                         </button>
                     </form>
                 </div>
-                <?php foreach ($wallets as $wallet): ?>
-                    <div class="wallet-item">
-                        <div class="status" style="filter:blur(0px)"><?= htmlspecialchars($wallet->status) ?></div>
-                        <div class="balance"><?= htmlspecialchars($wallet->balance) ?></div>
-                        <div class="currency"><?= htmlspecialchars($wallet->currency) ?></div>
-                    </div>
-                <?php endforeach; ?>
+                <?php if (isset($wallets)) : ?>
+                    <?php foreach ($wallets as $wallet): ?>
+                        <a class="wallet-item" href="/wallet/?id=<?= $wallet->id ?>">
+                            <div class="status" style="filter:blur(0px)"><?= htmlspecialchars($wallet->status) ?></div>
+                            <div class="balance"><?= htmlspecialchars($wallet->balance) ?></div>
+                            <div class="currency"><?= htmlspecialchars($wallet->currency) ?></div>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
             <div class="profile-card">
+
             </div>
         </div>
         <div id="modal">

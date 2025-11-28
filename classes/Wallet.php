@@ -39,12 +39,21 @@ class Wallet
     {
         $res = self::$db->query("SELECT * FROM wallets WHERE user_id =  :user_id", [':user_id' => $user_id])->fetchAll(PDO::FETCH_ASSOC);
         if (!$res) {
-            die("error");
+            return null;
         }
         $wallets = array();
         foreach ($res as $item) {
             $wallets[] = self::arrayToWallet($item);
         }
         return $wallets;
+    }
+
+    public static function viewWallet($id): ?Wallet
+    {
+        $res = self::$db->query("SELECT * FROM wallets where id = :id",[':id' => $id])->fetch(PDO::FETCH_ASSOC);
+        if (!$res) {
+            abort(404);
+        }
+        return self::arrayToWallet($res);
     }
 }
